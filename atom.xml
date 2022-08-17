@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>文杰の博客</title>
   
+  <subtitle>许老板的店</subtitle>
+  <link href="http://www.attack825.xyz/atom.xml" rel="self"/>
   
-  <link href="http://example.com/atom.xml" rel="self"/>
-  
-  <link href="http://example.com/"/>
+  <link href="http://www.attack825.xyz/"/>
   <updated>2022-08-15T09:20:58.283Z</updated>
-  <id>http://example.com/</id>
+  <id>http://www.attack825.xyz/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>wj</name>
     
   </author>
   
@@ -18,29 +18,29 @@
   
   <entry>
     <title>Welcome to MyBlog</title>
-    <link href="http://example.com/2022/08/15/My-New-Post/"/>
-    <id>http://example.com/2022/08/15/My-New-Post/</id>
+    <link href="http://www.attack825.xyz/2022/08/15/My-New-Post/"/>
+    <id>http://www.attack825.xyz/2022/08/15/My-New-Post/</id>
     <published>2022-08-15T08:51:01.000Z</published>
     <updated>2022-08-15T09:20:58.283Z</updated>
     
     
     
     
-    <category term="个人博客（第一层级）" scheme="http://example.com/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E7%AC%AC%E4%B8%80%E5%B1%82%E7%BA%A7%EF%BC%89/"/>
+    <category term="个人博客（第一层级）" scheme="http://www.attack825.xyz/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E7%AC%AC%E4%B8%80%E5%B1%82%E7%BA%A7%EF%BC%89/"/>
     
-    <category term="Hexo博客（第二层级）" scheme="http://example.com/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E7%AC%AC%E4%B8%80%E5%B1%82%E7%BA%A7%EF%BC%89/Hexo%E5%8D%9A%E5%AE%A2%EF%BC%88%E7%AC%AC%E4%BA%8C%E5%B1%82%E7%BA%A7%EF%BC%89/"/>
+    <category term="Hexo博客（第二层级）" scheme="http://www.attack825.xyz/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E7%AC%AC%E4%B8%80%E5%B1%82%E7%BA%A7%EF%BC%89/Hexo%E5%8D%9A%E5%AE%A2%EF%BC%88%E7%AC%AC%E4%BA%8C%E5%B1%82%E7%BA%A7%EF%BC%89/"/>
     
     
-    <category term="Hexo" scheme="http://example.com/tags/Hexo/"/>
+    <category term="Hexo" scheme="http://www.attack825.xyz/tags/Hexo/"/>
     
-    <category term="博客" scheme="http://example.com/tags/%E5%8D%9A%E5%AE%A2/"/>
+    <category term="博客" scheme="http://www.attack825.xyz/tags/%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://example.com/2022/08/15/hello-world/"/>
-    <id>http://example.com/2022/08/15/hello-world/</id>
+    <link href="http://www.attack825.xyz/2022/08/15/hello-world/"/>
+    <id>http://www.attack825.xyz/2022/08/15/hello-world/</id>
     <published>2022-08-15T07:54:56.064Z</published>
     <updated>2022-08-15T07:54:56.064Z</updated>
     
