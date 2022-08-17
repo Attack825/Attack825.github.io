@@ -1,0 +1,7 @@
+http://example.com/2022/08/15/My-New-Post/
+http://example.com/2022/08/15/hello-world/
+http://example.com/
+http://example.com/tags/Hexo/
+http://example.com/tags/%E5%8D%9A%E5%AE%A2/
+http://example.com/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E7%AC%AC%E4%B8%80%E5%B1%82%E7%BA%A7%EF%BC%89/
+http://example.com/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E7%AC%AC%E4%B8%80%E5%B1%82%E7%BA%A7%EF%BC%89/Hexo%E5%8D%9A%E5%AE%A2%EF%BC%88%E7%AC%AC%E4%BA%8C%E5%B1%82%E7%BA%A7%EF%BC%89/
