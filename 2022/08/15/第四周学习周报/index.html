@@ -1,0 +1,351 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>python学习周报十 | 文杰の博客</title><meta name="author" content="wj"><meta name="copyright" content="wj"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="python的time、datetime、string、re库 一、time库 1.时间类型 时间戳：格林威治时间1970年01月01日00分00秒（北京时间1970年01月01日08时00分00秒）起至现在的总秒数，是个数字。 元组struct_time：日期、时间是包含许多变量的，所以在Python中定义了一个元组struct_time将所有这些变量组合在一起，包括：年、月、日、小时、分钟、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python学习周报十">
+<meta property="og:url" content="http://www.attack825.xyz/2022/08/15/%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%AD%A6%E4%B9%A0%E5%91%A8%E6%8A%A5/index.html">
+<meta property="og:site_name" content="文杰の博客">
+<meta property="og:description" content="python的time、datetime、string、re库 一、time库 1.时间类型 时间戳：格林威治时间1970年01月01日00分00秒（北京时间1970年01月01日08时00分00秒）起至现在的总秒数，是个数字。 元组struct_time：日期、时间是包含许多变量的，所以在Python中定义了一个元组struct_time将所有这些变量组合在一起，包括：年、月、日、小时、分钟、">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2022-08-15T08:51:00.000Z">
+<meta property="article:modified_time" content="2022-12-13T10:08:22.668Z">
+<meta property="article:author" content="wj">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/a1.jpg"><link rel="canonical" href="http://www.attack825.xyz/2022/08/15/%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%AD%A6%E4%B9%A0%E5%91%A8%E6%8A%A5/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?https://tongji.baidu.com/web/welcome/login";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: wj","link":"链接: ","source":"来源: 文杰の博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'python学习周报十',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-12-13 18:08:22'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="文杰の博客" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/a1.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> Book</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">文杰の博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> Book</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">python学习周报十</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-08-15T08:51:00.000Z" title="发表于 2022-08-15 16:51:00">2022-08-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-13T10:08:22.668Z" title="更新于 2022-12-13 18:08:22">2022-12-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/object-Object/">[object Object]</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><a name="ozcFf"></a></p>
+<h1 id="python的time、datetime、string、re库"><a href="#python的time、datetime、string、re库" class="headerlink" title="python的time、datetime、string、re库"></a>python的time、datetime、string、re库</h1><p><a name="BZd20"></a></p>
+<h2 id="一、time库"><a href="#一、time库" class="headerlink" title="一、time库"></a>一、time库</h2><p><a name="il8aP"></a></p>
+<h3 id="1-时间类型"><a href="#1-时间类型" class="headerlink" title="1.时间类型"></a>1.时间类型</h3><ul>
+<li><strong>时间戳：</strong>格林威治时间1970年01月01日00分00秒（北京时间1970年01月01日08时00分00秒）起至现在的<strong>总秒数，是个数字</strong>。</li>
+<li><strong>元组struct_time：</strong>日期、时间是包含许多变量的，所以在Python中定义了一个元组struct_time将所有这些变量组合在一起，包括：年、月、日、小时、分钟、秒等。</li>
+<li><strong>字符串：</strong>可读性较高的日期时间形式，常见yyyy-MM-dd HH:mm:ss，例如 2022-10-15 11：20：59<br><a name="lHC3J"></a></li>
+</ul>
+<h3 id="2-时间函数"><a href="#2-时间函数" class="headerlink" title="2.时间函数"></a>2.时间函数</h3><p><a name="ELi29"></a></p>
+<h4 id="1）时间获取函数"><a href="#1）时间获取函数" class="headerlink" title="1）时间获取函数"></a>1）时间获取函数</h4><ul>
+<li>time()获取当前时间戳，即计算机内部时间值，浮点数</li>
+<li>ctime()获取当前时间并以易读方式表示，返回字符串</li>
+<li>gmtime()获取当前时间，表示为计算机可处理的时间格式</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2022/png/32662029/1665805220946-af68d904-6087-4cf7-9f0d-0e8854a07a2a.png#clientId=uc64b3166-651a-4&crop=0&crop=0&crop=1&crop=1&errorMessage=unknown%20error&from=paste&height=217&id=uf090d785&margin=%5Bobject%20Object%5D&name=image.png&originHeight=387&originWidth=1317&originalType=binary&ratio=1&rotation=0&showTitle=false&size=37428&status=error&style=none&taskId=u8e63cb50-c7ac-4b6a-91db-43848d3140e&title=&width=740" alt="image.png"><br><a name="nv66D"></a></p>
+<h4 id="2）时间格式化函数"><a href="#2）时间格式化函数" class="headerlink" title="2）时间格式化函数"></a>2）时间格式化函数</h4><ul>
+<li>strftime()</li>
+</ul>
+<p>时间格式化：将时间以合理的方式展示出来<br />格式化字符串日期&#x2F;时间说明值范围和实例</p>
+<table>
+<thead>
+<tr>
+<th>%y 两位数的年份表示（00-99）<br />%Y 四位数的年份表示（000-9999）<br />%m 月份（01-12）<br />%d 月内中的一天（0-31）<br />%H 24小时制小时数（0-23）<br />%I 12小时制小时数（01-12）<br />%M 分钟数（00&#x3D;59）<br />%S 秒（00-59）<br />%a 本地简化星期名称<br />%A 本地完整星期名称<br />%b 本地简化的月份名称</th>
+<th>%B 本地完整的月份名称<br />%c 本地相应的日期表示和时间表示<br />%j 年内的一天（001-366）<br />%p 本地A.M.或P.M.的等价符<br />%U 一年中的星期数（00-53）星期天为星期的开始<br />%w 星期（0-6），星期天为星期的开始<br />%W 一年中的星期数（00-53）星期一为星期的开始<br />%x 本地相应的日期表示<br />%X 本地相应的时间表示<br />%Z 当前时区的名称<br />%% %号本身</th>
+</tr>
+</thead>
+</table>
+<ul>
+<li>strptime()</li>
+</ul>
+<p>strptime(str, tpl)，str是字符串形式的时间值，tpl是格式化模板字符串，用来定义输入效果<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2022/png/32662029/1665805689379-fdd2e7af-8b04-4e10-a13f-60d616edd0a3.png#clientId=uc64b3166-651a-4&crop=0&crop=0&crop=1&crop=1&errorMessage=unknown%20error&from=paste&height=247&id=u58172a10&margin=%5Bobject%20Object%5D&name=image.png&originHeight=455&originWidth=1390&originalType=binary&ratio=1&rotation=0&showTitle=false&size=49080&status=error&style=none&taskId=uaaade28a-0fed-477b-bf26-0961dfb68f1&title=&width=755" alt="image.png"></p>
+<p><a name="p4BJn"></a></p>
+<h4 id="3）程序计时函数："><a href="#3）程序计时函数：" class="headerlink" title="3）程序计时函数："></a>3）程序计时函数：</h4><ul>
+<li>sleep()</li>
+</ul>
+<p>可以对程序休眠。也就是定时任务，可以设置时间间隔程序运行。<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2022/png/32662029/1665805893845-5e3f8abe-554b-45fa-9339-48dde443ffba.png#clientId=uc64b3166-651a-4&crop=0&crop=0&crop=1&crop=1&errorMessage=unknown%20error&from=paste&height=332&id=ubbdad747&margin=%5Bobject%20Object%5D&name=image.png&originHeight=357&originWidth=810&originalType=binary&ratio=1&rotation=0&showTitle=false&size=25497&status=error&style=none&taskId=u64dad00f-9a2d-439e-b5b4-8f355b597b9&title=&width=754" alt="image.png"></p>
+<ul>
+<li>perf_counter()</li>
+</ul>
+<p>perf_counter()返回一个CPU级别的精确时间计数值，单位为秒由于这个计数值起点不确定，连续调用差值才有意义，time()精度上相对没有那么高，而且受系统的影响，适合表示日期时间或者大程序程序的计时。<br />perf_counter()适合小一点的程序测试，会计算sleep()时间。<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2022/png/32662029/1665806221005-8d16edf5-870a-4cf0-a218-d857e535db4b.png#clientId=uc64b3166-651a-4&crop=0&crop=0&crop=1&crop=1&errorMessage=unknown%20error&from=paste&height=296&id=u71f0ba2c&margin=%5Bobject%20Object%5D&name=image.png&originHeight=340&originWidth=842&originalType=binary&ratio=1&rotation=0&showTitle=false&size=27808&status=error&style=none&taskId=u06367648-8fbd-4bfc-93d1-41c0cc93943&title=&width=733.6000366210938" alt="image.png"><br><a name="WGtab"></a></p>
+<h2 id="二、datetime库"><a href="#二、datetime库" class="headerlink" title="二、datetime库"></a>二、datetime库</h2><p><a name="OuzTL"></a></p>
+<h3 id="1-类和常量"><a href="#1-类和常量" class="headerlink" title="1.类和常量"></a>1.类和常量</h3><p>datetime库定义了2个常量和5个类。<br />2个常量分别是：</p>
+<ul>
+<li>MINYEAR&#x3D;1</li>
+<li>MAXYEAR&#x3D;9999</li>
+</ul>
+<p>5个类分别是：</p>
+<ul>
+<li>date类：表示日期的类</li>
+<li>time类：表示时间的类</li>
+<li>datetime类：表示时间日期的类</li>
+<li>timedelta类：表示两个datetime对象的差值；</li>
+<li>tzinfo类：表示时区的相关信息<br><a name="U4do3"></a></li>
+</ul>
+<h3 id="2-类的详解"><a href="#2-类的详解" class="headerlink" title="2.类的详解"></a>2.类的详解</h3><p><a name="VQ9h7"></a></p>
+<h4 id="date类"><a href="#date类" class="headerlink" title="date类"></a>date类</h4><p>date类包含三个参数，分别为year，month，day，返回格式为year-month-day。<br />构造函数</p>
+<ol>
+<li><strong>new</strong>(year,month,day)：默认的构造函数，创建date类的对象时直接传入year，month，day三个参数即可返回对应的日期。</li>
+<li>fromtimestamp(t)：使用时间戳构造对象，使用方法为：datetime.date.fromtimestamp(t)，传入参数t为一个时间戳，返回时间戳t对应的日期。</li>
+<li>today()：使用今天的日期构造对象，使用方法为：datetime.date.today()，无参数，返回今天的日期。</li>
+<li>fromordinal(n)：使用日期序数构造对象，使用方法为：datetime.date.fromordinal(n)，传入参数为一个整数序数，代表从公元1年1月1日开始的序数，序数每增加1代表增加1天，返回最终计算出的日期。</li>
+</ol>
+<p>方法</p>
+<ul>
+<li>timetuple()：返回日期对应的time.struct_time对象，格式为time.struct_time(tm_year&#x3D;1, tm_mon&#x3D;1, tm_mday&#x3D;2, tm_hour&#x3D;0, tm_min&#x3D;0, tm_sec&#x3D;0, tm_wday&#x3D;1, tm_yday&#x3D;2, tm_isdst&#x3D;-1) 。</li>
+<li>toordinal()：相当于fromordinal(n)的逆过程，返回值即为fromordinal(n)中的日期序数n。</li>
+<li>weekday()：返回该日期对应星期几，用[0,6]代表星期一到星期日。</li>
+<li>isoweekday()：作用同weekday()，用[1,7]代表星期一到星期日。</li>
+<li>isocalendar()：返回一个三元组，格式为(year,week_number,weekday)，分别代表年，第几周，星期几。</li>
+<li>isoformat()：返回标准日期格式：YYYY-MM-DD。</li>
+<li>ctime()：返回格式为：Sat Sep 8 00:00:00 2018</li>
+<li>strftime(format)：把日期按照format指定的格式进行格式化，具体的格式化符号如下。</li>
+<li>replace(year,month,day)：传入参数为year，month，day，返回对应的新日期。</li>
+</ul>
+<p><a name="rdsRN"></a></p>
+<h4 id="time类"><a href="#time类" class="headerlink" title="time类"></a>time类</h4><p>time类包含六个参数，分别为hour，minute，second，microsecond，tzinfo，fold，返回格式为hour:minute:second(.microsecond)。<br />构造函数<br /><strong>new</strong>(hour&#x3D;0, minute&#x3D;0, second&#x3D;0, microsecond&#x3D;0, tzinfo&#x3D;None, fold&#x3D;0)：默认的构造函数，创建time类的对象时直接传入相应参数即可返回对应的时间。<br />方法</p>
+<ul>
+<li>isoformat()：返回标准时间格式：HH:MM:SS.mmmmmm+zz:zz。</li>
+<li>strftime(format)：把时间按照format指定的格式进行格式化，具体的格式化符号与date类中介绍的相同。</li>
+<li>utcoffset()：返回timezone的偏移量。</li>
+<li>tzname()：返回timezone的名称。</li>
+<li>replace()：传入对应的参数，返回新的时间。<br><a name="RXR6H"></a></li>
+</ul>
+<h4 id="datetime类"><a href="#datetime类" class="headerlink" title="datetime类"></a>datetime类</h4><p>datetime类是date类和time类的合体，包含前两个类的全部参数。<br />构造函数</p>
+<ul>
+<li><strong>new</strong>(year, month, day, hour&#x3D;0, minute&#x3D;0, second&#x3D;0,microsecond&#x3D;0, tzinfo&#x3D;None, fold&#x3D;0)：默认的构造函数，创建datetime类的对象时直接传入相应参数即可返回对应的时间日期。</li>
+<li>fromtimestamp(t)：使用时间戳构造对象，传入参数t为一个时间戳，返回时间戳t对应的日期和时间。</li>
+<li>utcfromtimestamp(t)：使用时间戳构造对象，传入参数t为一个时间戳，返回时间戳t对应的UTC（时间标准时间）日期和时间。</li>
+<li>now()：使用当前日期和时间构造对象，无参数，返回当前的日期和时间。</li>
+<li>utcnow()：使用当前日期和时间构造对象，无参数，返回当前的UTC（时间标准时间）日期和时间。</li>
+<li>combine(date,time)：使用date和time构造对象，传入参数为1个date对象和1个time对象，返回计算出的日期。</li>
+</ul>
+<p>方法</p>
+<ul>
+<li>timetuple()：返回日期时间对应的time.struct_time对象，格式为time.struct_time(tm_year&#x3D;1973, tm_mon&#x3D;11, tm_mday&#x3D;29, tm_hour&#x3D;21, tm_min&#x3D;33, tm_sec&#x3D;9, tm_wday&#x3D;3, tm_yday&#x3D;333, tm_isdst&#x3D;-1) 。</li>
+<li>utctimetuple()：与timetuple()相似，返回日期时间对应的UTC（时间标准时间）time.struct_time对象。</li>
+<li>astimezone()：返回的格式中加入时区信息，格式为：1973-11-29 21:33:09+08:00。</li>
+<li>date()：返回date部分</li>
+<li>time()：返回time部分，tzinfo设置为None。（另有timetz()方法返回有相同tzinfo的time()）</li>
+<li>isoformat(sep)：返回标准日期时间格式，传入参数sep可设置日期和时间的分隔符，默认为’T’：1973-11-29T21:33:09。</li>
+<li>ctime()：返回格式为：Sat Sep 8 00:00:00 2018</li>
+<li>strftime(format)：把日期按照format指定的格式进行格式化，具体的格式化符号与date类中介绍的相同。</li>
+<li>strptime(date_string,format)：将字符串格式转换为日期格式，具体的格式化符号与date类中介绍的相同。</li>
+<li>replace()：传入对应的参数，返回新的日期时间。<br><a name="aejkb"></a></li>
+</ul>
+<h4 id="timedelta类"><a href="#timedelta类" class="headerlink" title="timedelta类"></a>timedelta类</h4><p>timedelta类代表两个datetime对象之间的时间差。<br />构造函数<br /><strong>new</strong>(days&#x3D;0, seconds&#x3D;0, microseconds&#x3D;0,milliseconds&#x3D;0, minutes&#x3D;0, hours&#x3D;0, weeks&#x3D;0)：默认的构造函数，创建timedelta类的对象时直接传入相应参数即可返回对应单位的时间差。<br />方法</p>
+<ul>
+<li>支持两个timedelta对象之间的加、减操作。</li>
+<li>支持对一个timedelta进行取正、取负、取绝对值等操作。</li>
+<li>支持两个timedelta对象之间的比较。</li>
+<li>支持一个timedelta对象乘以、除以一个整数的操作<br><a name="LTeMx"></a></li>
+</ul>
+<h4 id="tzinfo类"><a href="#tzinfo类" class="headerlink" title="tzinfo类"></a>tzinfo类</h4><p>tzinfo类是一个虚拟基类，代表时区（time zone），创建子类时必须重写name()，utcoffset()，dst()这三个方法。</p>
+<p><a name="Ekxo5"></a></p>
+<h2 id="三、string库"><a href="#三、string库" class="headerlink" title="三、string库"></a>三、string库</h2><p><a name="eTQPV"></a></p>
+<h3 id="1-string函数"><a href="#1-string函数" class="headerlink" title="1.string函数"></a>1.string函数</h3><p><a name="X2JmX"></a></p>
+<h4 id="1）大小写转换"><a href="#1）大小写转换" class="headerlink" title="1）大小写转换"></a>1）大小写转换</h4><ul>
+<li>全部大小写转化upper()与lower()</li>
+</ul>
+<p>upper()负责将指定字符串变为大写，可以单独使用，也可以放到print函数中<br />lower()负责将指定字符串变为小写，可以单独使用，也可以放到print函数中</p>
+<ul>
+<li>将字符串首部变更大小写title()与capitalize()</li>
+</ul>
+<p>title()将给定的字符串中所有单词的首字母大写，其他全部小写<br />capitalize()将给定的字符串中首字母大写，其他小写<br />这两个函数主要用于文稿改写等方面</p>
+<ul>
+<li>大小写反转swapcase()</li>
+</ul>
+<p>swapcase()的功能便是将原字符串中的大写改为小写，小写再改为大写<br />我们以”qweASDrtZX”为例子，结果应该为：QWEasdRTzx<br><a name="J3vRv"></a></p>
+<h4 id="2）判断函数"><a href="#2）判断函数" class="headerlink" title="2）判断函数"></a>2）判断函数</h4><ul>
+<li>isdecimal():判断给定字符串是否全为数字</li>
+<li>isalpha():判断给定的字符串是否全为字母</li>
+<li>isalnum()：判断给定的字符串是否只含有数字与字母</li>
+<li>isupper():判断给定的字符串是否全为大写</li>
+<li>islower():判断给定的字符串是否全为小写</li>
+<li>istitle():判断给定的字符串是否符合title()</li>
+<li>isspace():判断给定的字符串是否为空白符（空格、换行、制表符）</li>
+<li>isprintable():判断给定的字符串是否为可打印字符（只有空格可以，换行、制表符都不可以）</li>
+<li>isidentifier():判断给定的字符串是否符合命名规则（只能是字母或下划线开头、不能包含除数字、字母和下划线以外的任意字符。）<br><a name="IOWyS"></a></li>
+</ul>
+<h4 id="3）字符串填充"><a href="#3）字符串填充" class="headerlink" title="3）字符串填充"></a>3）字符串填充</h4><ul>
+<li>居中为center(width，fillchar),这时候原来的字符串将会在中间，扩充物出现在两边。</li>
+<li>居左为ljust(width，fillchar)，l为lef的缩写，源字符串在左边，填充物出现在字符串的右边。</li>
+<li>居右为rjust(width，fillchar),  r为right的缩写，源字符串在右边，填充物出现在字符串的左边。</li>
+</ul>
+<p>扩充的长短，也就是width，当字符串比width小时才会扩充，当字符串大于长度时，自然是返回字符串本身。填充物fillchar是可选的，其默认为空格，可以更改为任意字符</p>
+<ul>
+<li>zfill(width)只需要传入参数width即可，填充物为“0”，采用居右填充的方式另外一方面该函数会识别字符串的正负，若为“+”或者“-”则不变，越过继续填充</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2022/png/32662029/1665836620430-3cda45d5-9b70-41be-84e1-0932d43b170a.png#clientId=u607b0333-ecec-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=354&id=u27952122&margin=%5Bobject%20Object%5D&name=image.png&originHeight=443&originWidth=1082&originalType=binary&ratio=1&rotation=0&showTitle=false&size=37707&status=done&style=none&taskId=ub3e695e6-78a7-439f-836b-de8630f36af&title=&width=865.6" alt="image.png"><br><a name="oUq8U"></a></p>
+<h4 id="4-子字符串搜索"><a href="#4-子字符串搜索" class="headerlink" title="4)子字符串搜索"></a>4)子字符串搜索</h4><ul>
+<li>子字符串位置搜索count(sub[, start[, end]])</li>
+</ul>
+<p>主要对指定字符串搜索是否具有给定的子字符串sub,若具有则返回出现次数。strat与end代表搜索边界，若无写则代表全字符串搜索</p>
+<ul>
+<li>字符串开始与结尾判断startswith(prefix[, start[, end]])和endswith(suffix[, start[, end]])</li>
+</ul>
+<p>两个函数作用相同，判断函数的开始，或者末尾的字符串是否为指定字符串与之前的搜索相同，可以给字符串加边界，若无则为全字符串搜索两个函数都属于判断函数，返回结果为True与False</p>
+<ul>
+<li>字符串位置锁定find与index函数</li>
+<li>find(sub[, start[, end]]) 返回第一个子字符串的位置信息，若无则为-1</li>
+<li>rfind(sub[, start[, end]])返回最右边的第一个子字符串的位置信息，若无则为-1</li>
+<li>index(sub[, start[, end]]) 返回第一个子字符串的位置信息，若无则为报错</li>
+<li>rindex(sub[, start[, end]])返回最右边的第一个子字符串的位置信息，若无则报错</li>
+</ul>
+<p><a name="hnPV3"></a></p>
+<h4 id="5）字符串替换"><a href="#5）字符串替换" class="headerlink" title="5）字符串替换"></a>5）字符串替换</h4><ul>
+<li>replace(old, new[, count])：将搜索到的字符串改为新字符串</li>
+</ul>
+<p>作为替代函数，旧的字符串与新的字符串是必须输入的count是可选择输入的参数，代表更改个数。</p>
+<ul>
+<li>expandtabs(N)将\t 改为一定数量的空格</li>
+</ul>
+<p>空格计算方式：N-（之前字符串长度）&#x3D;空格数<br />若N-（之前字符串长度）&#x3D;0 则空格数为N<br />若N-（之前字符串长度）&lt;0 则空格数为1<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2022/png/32662029/1665809336302-f222418e-06aa-4eb6-a9d9-88f2ec0537d0.png#clientId=uc64b3166-651a-4&crop=0&crop=0&crop=1&crop=1&errorMessage=unknown%20error&from=paste&height=238&id=uad535344&margin=%5Bobject%20Object%5D&name=image.png&originHeight=298&originWidth=918&originalType=binary&ratio=1&rotation=0&showTitle=false&size=23143&status=error&style=none&taskId=u024e57a5-b29b-4874-a0bd-b22e5dd94ec&title=&width=734.4" alt="image.png"><br />第一个\t ：设定长度为4，之前字符串qwe长度为3，4-3&#x3D;1 替换1个空格<br />第二个\t ：设定长度为4，之前字符串qwer长度为4，4-4&#x3D;0 替换4个空格<br />第三个\t ：设定长度为4，之前字符串qsdfsdf长度为7，4-7&#x3D;-3&lt;0 替换1个空格<br><a name="ZmBMJ"></a></p>
+<h4 id="6）字符串分割"><a href="#6）字符串分割" class="headerlink" title="6）字符串分割"></a>6）字符串分割</h4><ul>
+<li>字符串分割常用函数为partition()和rpartition()</li>
+</ul>
+<p>partition(sep)对给定字符串进行切割，切割成三部分<br />首先搜索到字符串sep，将sep之前的部分为一部分，sep本身作为一部分，剩下作为一部分<br />partition()与rpartition()之间十分相似，主要不同体现在当字符串中没有指定sep时<br />partition()分为三部分，字符串、空白、空白<br />rpartition()分为三部分，空白、空白、字符串</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2022/png/32662029/1665809257656-4b598331-ccc3-4898-885d-a840cb1e0fc6.png#clientId=uc64b3166-651a-4&crop=0&crop=0&crop=1&crop=1&errorMessage=unknown%20error&from=paste&height=317&id=uf8a04322&margin=%5Bobject%20Object%5D&name=image.png&originHeight=396&originWidth=1138&originalType=binary&ratio=1&rotation=0&showTitle=false&size=43058&status=error&style=none&taskId=ubcba12c7-5398-4139-b228-d943a60f14c&title=&width=910.4" alt="image.png"></p>
+<ul>
+<li>split(sep&#x3D;None, maxsplit&#x3D;-1)和rsplit(sep&#x3D;None, maxsplit&#x3D;-1)</li>
+</ul>
+<p>sep为切割，默认为空格<br />maxsplit为切割次数，给值-1或者none，将会从左到右每一个sep切割一次<br />rsplit()相同，但是其遍历方式从右到左<br><a name="Q1VLC"></a></p>
+<h4 id="7）字符串添加"><a href="#7）字符串添加" class="headerlink" title="7）字符串添加"></a>7）字符串添加</h4><ul>
+<li>join()</li>
+</ul>
+<p>将可迭代数据用字符串连接起来 ，首先理解什么是可迭代数据，简单理解就是字符串string、列表list、元组tuple、字典dict、集合set。<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2022/png/32662029/1665810008993-fc05654b-b5aa-4c57-8117-8f20e819e587.png#clientId=uc64b3166-651a-4&crop=0&crop=0&crop=1&crop=1&errorMessage=unknown%20error&from=paste&height=350&id=ue01086b6&margin=%5Bobject%20Object%5D&name=image.png&originHeight=438&originWidth=977&originalType=binary&ratio=1&rotation=0&showTitle=false&size=38354&status=error&style=none&taskId=ufa1d0333-b9b9-46e0-8f31-27d095089b4&title=&width=781.6" alt="image.png"></p>
+<p>由于参与迭代的每个元素必须是字符串类型，不能包含数字或其他类型。<br />所以L1&#x3D;(1,2,3)或者L2&#x3D;(‘AB’,{‘a’,’cd’})是会报错的<br><a name="LZyNC"></a></p>
+<h4 id="8）字符串修剪"><a href="#8）字符串修剪" class="headerlink" title="8）字符串修剪"></a>8）字符串修剪</h4><ul>
+<li>strip([char])是为移除指定字符串char，如果没传入参数则为移除空格、制表符、换行符</li>
+<li>lstrip()中 l为left缩写，函数表示从左到右遍历</li>
+<li>rstrip()中 r为right缩写，函数表示从右边开始遍历</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2022/png/32662029/1665810163424-d5ac19d9-5931-4839-a655-6920876970d2.png#clientId=uc64b3166-651a-4&crop=0&crop=0&crop=1&crop=1&errorMessage=unknown%20error&from=paste&height=326&id=ua82241a4&margin=%5Bobject%20Object%5D&name=image.png&originHeight=407&originWidth=1036&originalType=binary&ratio=1&rotation=0&showTitle=false&size=39747&status=error&style=none&taskId=ucb7b2847-3a07-46ce-a1d2-f3ebf968e29&title=&width=828.8" alt="image.png"><br><a name="bHitg"></a></p>
+<h2 id="四、re库"><a href="#四、re库" class="headerlink" title="四、re库"></a>四、re库</h2><p><a name="R846y"></a></p>
+<h3 id="1-re模块常量"><a href="#1-re模块常量" class="headerlink" title="1.re模块常量"></a>1.re模块常量</h3><p>暂无<br><a name="QpK6b"></a></p>
+<h3 id="2-re模块函数"><a href="#2-re模块函数" class="headerlink" title="2.re模块函数"></a>2.re模块函数</h3><p><a name="YClqp"></a></p>
+<h4 id="1）re-findall"><a href="#1）re-findall" class="headerlink" title="1）re.findall"></a>1）re.findall</h4><p>在字符串中找到正则表达式所匹配的所有子串，并返还一个列表，如果有多个匹配模式，则返还元组列表，如果没有找到则返回空列表。<br />语法格式：findall（string[,pos[,endpos[]]]）<br />参数：<br />string：待匹配的字符串<br />pos：可选参数，指定字符串的起始位置，默认为0<br />endpos：可选参数，指定字符串的结束位置，默认为字符串长度<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2022/png/32662029/1665837693672-70b29e1f-9d99-4d9e-b034-631fdd4f85ed.png#clientId=u607b0333-ecec-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=246&id=ubea91e67&margin=%5Bobject%20Object%5D&name=image.png&originHeight=307&originWidth=857&originalType=binary&ratio=1&rotation=0&showTitle=false&size=22221&status=done&style=none&taskId=ua69e0592-712b-43bb-9fb6-8a390391f95&title=&width=685.6" alt="image.png"><br><a name="e8dvc"></a></p>
+<h4 id="2-re-compile"><a href="#2-re-compile" class="headerlink" title="2)re.compile"></a>2)re.compile</h4><p>compile函数用于编译正则表达式，生成一个正则表达式对象，语法格式为re.compile(pattern[,flags])<br />参数：<br />pattern：一个字符串形式的正则表达式<br />flags：可选，表示匹配模式<br />它单独使用就没有任何意义，需要和findall(), search(), match(）搭配使用。<br><a name="Nt76X"></a></p>
+<h3 id="3-正则表达式"><a href="#3-正则表达式" class="headerlink" title="3.正则表达式"></a>3.正则表达式</h3><p>暂无</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://www.attack825.xyz">wj</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://www.attack825.xyz/2022/08/15/%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%AD%A6%E4%B9%A0%E5%91%A8%E6%8A%A5/">http://www.attack825.xyz/2022/08/15/第四周学习周报/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://www.attack825.xyz" target="_blank">文杰の博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/08/15/hello-world/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Hello World</div></div></a></div><div class="next-post pull-right"><a href="/2022/08/15/%E7%AC%AC%E5%85%AD%E5%91%A8%E5%AD%A6%E4%B9%A0%E5%91%A8%E6%8A%A5/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">python学习周报六</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/a1.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">wj</div><div class="author-info__description">无人之境</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Attack825"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Attack825" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xuwenjie815@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=2707138687" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="https://www.attack825.xyz" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python%E7%9A%84time%E3%80%81datetime%E3%80%81string%E3%80%81re%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">python的time、datetime、string、re库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81time%E5%BA%93"><span class="toc-number">1.1.</span> <span class="toc-text">一、time库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%97%B6%E9%97%B4%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.时间类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%97%B6%E9%97%B4%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.2.</span> <span class="toc-text">2.时间函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%EF%BC%89%E6%97%B6%E9%97%B4%E8%8E%B7%E5%8F%96%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">1）时间获取函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%EF%BC%89%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">2）时间格式化函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%EF%BC%89%E7%A8%8B%E5%BA%8F%E8%AE%A1%E6%97%B6%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">3）程序计时函数：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81datetime%E5%BA%93"><span class="toc-number">1.2.</span> <span class="toc-text">二、datetime库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%B1%BB%E5%92%8C%E5%B8%B8%E9%87%8F"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.类和常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%B1%BB%E7%9A%84%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.类的详解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#date%E7%B1%BB"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">date类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#time%E7%B1%BB"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">time类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#datetime%E7%B1%BB"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">datetime类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#timedelta%E7%B1%BB"><span class="toc-number">1.2.2.4.</span> <span class="toc-text">timedelta类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tzinfo%E7%B1%BB"><span class="toc-number">1.2.2.5.</span> <span class="toc-text">tzinfo类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81string%E5%BA%93"><span class="toc-number">1.3.</span> <span class="toc-text">三、string库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-string%E5%87%BD%E6%95%B0"><span class="toc-number">1.3.1.</span> <span class="toc-text">1.string函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%EF%BC%89%E5%A4%A7%E5%B0%8F%E5%86%99%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">1）大小写转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%EF%BC%89%E5%88%A4%E6%96%AD%E5%87%BD%E6%95%B0"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">2）判断函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%EF%BC%89%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A1%AB%E5%85%85"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">3）字符串填充</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%90%9C%E7%B4%A2"><span class="toc-number">1.3.1.4.</span> <span class="toc-text">4)子字符串搜索</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%EF%BC%89%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2"><span class="toc-number">1.3.1.5.</span> <span class="toc-text">5）字符串替换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%EF%BC%89%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%86%E5%89%B2"><span class="toc-number">1.3.1.6.</span> <span class="toc-text">6）字符串分割</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7%EF%BC%89%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%B7%BB%E5%8A%A0"><span class="toc-number">1.3.1.7.</span> <span class="toc-text">7）字符串添加</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8%EF%BC%89%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BF%AE%E5%89%AA"><span class="toc-number">1.3.1.8.</span> <span class="toc-text">8）字符串修剪</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81re%E5%BA%93"><span class="toc-number">1.4.</span> <span class="toc-text">四、re库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-re%E6%A8%A1%E5%9D%97%E5%B8%B8%E9%87%8F"><span class="toc-number">1.4.1.</span> <span class="toc-text">1.re模块常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-re%E6%A8%A1%E5%9D%97%E5%87%BD%E6%95%B0"><span class="toc-number">1.4.2.</span> <span class="toc-text">2.re模块函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%EF%BC%89re-findall"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">1）re.findall</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-re-compile"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">2)re.compile</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.4.3.</span> <span class="toc-text">3.正则表达式</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/12/13/%E7%AC%AC%E4%B8%83%E5%91%A8%E5%AD%A6%E4%B9%A0%E5%91%A8%E6%8A%A5/" title="python学习周报七"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="python学习周报七"/></a><div class="content"><a class="title" href="/2022/12/13/%E7%AC%AC%E4%B8%83%E5%91%A8%E5%AD%A6%E4%B9%A0%E5%91%A8%E6%8A%A5/" title="python学习周报七">python学习周报七</a><time datetime="2022-12-13T09:51:00.000Z" title="发表于 2022-12-13 17:51:00">2022-12-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/15/%E7%AC%AC%E4%B8%89%E5%91%A8%E5%AD%A6%E4%B9%A0%E5%91%A8%E6%8A%A5/" title="python学习周报三"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="python学习周报三"/></a><div class="content"><a class="title" href="/2022/08/15/%E7%AC%AC%E4%B8%89%E5%91%A8%E5%AD%A6%E4%B9%A0%E5%91%A8%E6%8A%A5/" title="python学习周报三">python学习周报三</a><time datetime="2022-08-15T08:51:00.000Z" title="发表于 2022-08-15 16:51:00">2022-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/15/%E7%AC%AC%E4%B9%9D%E5%91%A8%E5%AD%A6%E4%B9%A0%E5%91%A8%E6%8A%A5/" title="python学习周报九"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="python学习周报九"/></a><div class="content"><a class="title" href="/2022/08/15/%E7%AC%AC%E4%B9%9D%E5%91%A8%E5%AD%A6%E4%B9%A0%E5%91%A8%E6%8A%A5/" title="python学习周报九">python学习周报九</a><time datetime="2022-08-15T08:51:00.000Z" title="发表于 2022-08-15 16:51:00">2022-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/15/%E7%AC%AC%E5%85%AB%E5%91%A8%E5%AD%A6%E4%B9%A0%E5%91%A8%E6%8A%A5/" title="python学习周报八"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="python学习周报八"/></a><div class="content"><a class="title" href="/2022/08/15/%E7%AC%AC%E5%85%AB%E5%91%A8%E5%AD%A6%E4%B9%A0%E5%91%A8%E6%8A%A5/" title="python学习周报八">python学习周报八</a><time datetime="2022-08-15T08:51:00.000Z" title="发表于 2022-08-15 16:51:00">2022-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/15/%E7%AC%AC%E4%BA%94%E5%91%A8%E5%AD%A6%E4%B9%A0%E5%91%A8%E6%8A%A5/" title="python学习周报五"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="python学习周报五"/></a><div class="content"><a class="title" href="/2022/08/15/%E7%AC%AC%E4%BA%94%E5%91%A8%E5%AD%A6%E4%B9%A0%E5%91%A8%E6%8A%A5/" title="python学习周报五">python学习周报五</a><time datetime="2022-08-15T08:51:00.000Z" title="发表于 2022-08-15 16:51:00">2022-08-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By wj</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script></div></body></html>
